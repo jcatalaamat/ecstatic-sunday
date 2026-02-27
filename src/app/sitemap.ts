@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { client } from '@/sanity/lib/client';
+import { client, isSanityConfigured } from '@/sanity/lib/client';
 import { SITE_CONFIG } from '@/lib/constants';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -16,6 +16,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
     { url: `${baseUrl}/guidelines`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
   ];
+
+  if (!isSanityConfigured) return staticRoutes;
 
   // Dynamic routes from Sanity
   try {
