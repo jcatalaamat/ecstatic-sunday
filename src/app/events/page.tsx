@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 async function getEvents(): Promise<Event[]> {
   try {
-    return await client.fetch(allEventsQuery);
+    return (await client.fetch(allEventsQuery)) || [];
   } catch {
     return [];
   }

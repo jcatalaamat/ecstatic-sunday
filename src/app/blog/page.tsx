@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 async function getBlogPosts(): Promise<BlogPost[]> {
   try {
-    return await client.fetch(blogPostsQuery);
+    return (await client.fetch(blogPostsQuery)) || [];
   } catch {
     return [];
   }

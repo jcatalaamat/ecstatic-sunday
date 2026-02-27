@@ -20,7 +20,7 @@ async function getData() {
       client.fetch<GalleryImage[]>(galleryImagesQuery),
       client.fetch<BlogPost[]>(featuredBlogPostsQuery),
     ]);
-    return { testimonials, gallery: gallery?.slice(0, 6) || [], posts: posts || [] };
+    return { testimonials: testimonials || [], gallery: gallery?.slice(0, 6) || [], posts: posts || [] };
   } catch {
     return { testimonials: [], gallery: [], posts: [] };
   }

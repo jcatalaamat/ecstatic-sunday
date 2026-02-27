@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 async function getGalleryImages(): Promise<GalleryImage[]> {
   try {
-    return await client.fetch(galleryImagesQuery);
+    return (await client.fetch(galleryImagesQuery)) || [];
   } catch {
     return [];
   }

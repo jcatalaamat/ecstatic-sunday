@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 async function getVolunteerRoles(): Promise<VolunteerRole[]> {
   try {
-    return await client.fetch(volunteerRolesQuery);
+    return (await client.fetch(volunteerRolesQuery)) || [];
   } catch {
     return [];
   }

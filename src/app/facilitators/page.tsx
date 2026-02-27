@@ -21,7 +21,7 @@ const roleLabels: Record<string, string> = {
 
 async function getFacilitators(): Promise<Facilitator[]> {
   try {
-    return await client.fetch(facilitatorsQuery);
+    return (await client.fetch(facilitatorsQuery)) || [];
   } catch {
     return [];
   }
